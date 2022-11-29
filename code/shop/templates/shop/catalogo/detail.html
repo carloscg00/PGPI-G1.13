@@ -1,18 +1,17 @@
-{% extends "shop/base.html" %}
-{% load static %}
-{% block title %}
-{{ product.name }}
-{% endblock %}
-{% block content %}
-    <div class="product-detail">
-        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
-        <h1>{{ product.name }}</h1>
-        <h2>
-            <a href="{{ product.category.get_absolute_url }}">
-                {{ product.category }}
-            </a>
-        </h2>
-        <p class="price">${{ product.price }}</p>
-            {{ product.description|linebreaks }}
-    </div>
+{% extends "shop/layout.html" %} {% load static %} {% block content %}
+<div id="product_detail">
+  <h1>{{ product.name }}</h1>
+  <img
+    id="img_detail"
+    src=" {% if product.image %} {{ product.image.url }} {%else%}
+  {% static 'CortoYCambio.png' %}{%endif%}"
+  />
+  <h2>
+    <a href="{{ product.category.get_absolute_url }}">
+      {{ product.category }}
+    </a>
+  </h2>
+  <h3 id="price">${{ product.price }}</h3>
+  {{ product.description|linebreaks }}
+</div>
 {% endblock %}
