@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Category, Product
 from . import forms
+from cart.forms import CartAddProductForm
 
 preguntas = []
 
@@ -12,21 +13,8 @@ def sobre_nosotros_view(request):
     return render(request, 'shop/sobre_nosotros.html')
 
 
-def atencion_cliente_view(request):
-    if len(preguntas)==0:
-        res = render(request, 'shop/atencion_cliente.html')
-    else:
-        res = render(request, 'shop/atencion_cliente.html',{'preguntas':preguntas})
-    return res
-
-def atencion_cliente_datos(request):
-    if request.method=="GET":    
-        tipo = request.GET['tipo']
-        cuestion = request.GET['cuestion']
-        tupla = (tipo,cuestion)
-        preguntas.append(tupla)
-    context = {'preguntas':preguntas}
-    return render(request, 'shop/atencion_cliente.html',context)
+#def atencion_cliente_view(request):
+    return render(request, 'shop/atencion_cliente.html')
 
 def cliente_form(request):
     form = forms.clienteForm()
@@ -49,4 +37,6 @@ def product_list(request, category_slug=None):
 
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
-    return render(request, 'myshop/catalogo/detail.html', {'product': product})
+    cart_product_form = CartAddProductForm()
+    return render(request, 'shop/catalogo/detail.html', {'product': product,
+                                    'cart_product_form': cart_product_form})

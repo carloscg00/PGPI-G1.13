@@ -1,19 +1,12 @@
-{% extends 'shop/layout.html' %} {% block body %}
+{% extends 'shop/layout.html' %} {% load static %}
+{% block content %}
 <div id="atencion_cliente">
   <div id="atencion_cliente_form">
-    <form action="{% url 'atencion_cliente_datos' %}" method="get">
+    <form action="{% url 'shop:atencion_cliente' %}" method="get">
       {% csrf_token %} {{ form }}
-      <label for="tipo">Tipo de peticion: </label>
-      <select id="tipo" name="tipo">
-        <option value="Pregunta">Pregunta</option>
-        <option value="Recomendacion">Recomendacion</option>
-        <option value="Reclamacion">Reclamacion</option>
-        <option value="Otro">Otro</option></select
-      ><br /><br />
-      <label for="cuestion">Introduzca su cuestion: </label>
-      <input type="text" name="cuestion" id="cuestion" required="required" />
-      <br /><br />
+     
       <input type="submit" value="Enviar" />
     </form>
   </div>
+</div>
 {% endblock %}

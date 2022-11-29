@@ -5,7 +5,7 @@
     {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
 
-{% block body %}
+{% block content %}
     <div id="sidebar">
         <h3>Categories</h3>
         <ul>
@@ -19,8 +19,8 @@
             {% endfor %}
         </ul>
     </div>
-    <div id="main" class="product-list">
-        <h1>{% if category %}{{ category.name }}{% else %}Products {% endif %}</h1>
+    <div id="main" class="product_list">
+        <h1>{% if category %}{{ category.name }}{% else %}Servicios {% endif %}</h1>
         {% for product in products %}
             <div class="item">
                 <a href="{{ product.get_absolute_url }}">
