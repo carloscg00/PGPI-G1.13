@@ -5,3 +5,9 @@ class clienteForm(forms.Form):
           ('recomendacion','Recomendacion'),('reclamacion','Reclamacion'),('otro','Otro')])
     pregunta = forms.CharField()
     descripcion = forms.CharField()
+
+
+class reservaForm(forms.Form):
+      servicio =  forms.ChoiceField(choices=[('corte_caballero','Corte para caballero'),
+          ('corte_niño','Corte para niño'),('arreglo_barba','Barba'),('tinte','Tinte')])  
+      informacion_extra = forms.CharField()

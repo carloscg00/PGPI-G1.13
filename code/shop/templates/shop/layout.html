@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Corto & Cambio</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+  <div id="container">
+  <header>
+      <a href="{% url 'shop:inicio' %}">
+        <image src="{% static 'CortoYCambio.png' %}" alt="logo" id="logo">
+      </a>
+      <h1 id="titulo">Corto & Cambio</h1>  
+  </header>
+    <nav>
+      <ul>
+        <div id="botones_funcion"> 
+          <li><a name="textoMenu" href="{% url 'shop:product_list' %}">Catálogo</a></li>
+          <li><a name="textoMenu" href="{% url 'shop:sobre_nosotros' %}">Sobre Nosotros</a></li>
+          <li><a name="textoMenu" href="{% url 'shop:atencion_cliente' %}">Atención al cliente</a></li>
+          <li><a name="textoMenu" href="{% url 'shop:reserva_form' %}">Reserve una cita</a></li>
+        </div>
+        <div id="botones_sesion">
+          <span class="user">
+            {% if request.user.is_authenticated %}
+              Hola, {{ request.user.first_name }},
+              <a href="{% url "logout" %}">Logout</a>
+            {% else %}
+              <li><a href="{% url 'register' %}">Registrarse</a></li>
+              <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+            {% endif %}
+           </span>
+        </div>
+          </ul>
+    </nav>
+      
+
+      <div id="content">
+        {% block content %}
+        {% endblock %}
+      </div>
+</body>
+<footer>
+  &copy; Corto & Cambio 2022 - 2023
+</footer>
+</div>
+</html>
