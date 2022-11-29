@@ -7,7 +7,6 @@ urlpatterns = [
     path('', views.inicio_view, name='inicio'),
     path('sobre_nosotros', views.sobre_nosotros_view, name="sobre_nosotros"),
     path('atencion_cliente', views.atencion_cliente_view, name="atencion_cliente"),
-    path('atencion_cliente_datos',views.atencion_cliente_datos, name="atencion_cliente_datos"),
     path('account/', include('account.urls'), name='login'),
     path('account/', include('account.urls'), name='register'),
     path('reserva_form',views.reserva_form, name="reserva_form"),

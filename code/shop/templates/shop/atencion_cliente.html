@@ -1,4 +1,5 @@
-{% extends 'shop/layout.html' %} {% block body %}
+{% extends 'shop/layout.html' %} {% load static %}
+{% block content %}
 <div id="atencion_cliente">
   <div id="atencion_cliente_form">
     <form action="{% url 'atencion_cliente_datos' %}" method="get">
@@ -16,4 +17,5 @@
       <input type="submit" value="Enviar" />
     </form>
   </div>
+</div>
 {% endblock %}
