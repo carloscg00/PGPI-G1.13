@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
+
+
 ]
 
 MIDDLEWARE = [
@@ -123,7 +125,7 @@ STATIC_URL = '/static/'
 
 
 # Login/Logout
-LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = 'inicio'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
