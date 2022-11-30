@@ -4,9 +4,9 @@
   <div id="atencion_cliente_form">
     <form action="{% url 'shop:atencion_cliente' %}" method="get">
       {% csrf_token %} {{ form }}
-     
       <input type="submit" value="Enviar" />
     </form>
   </div>
 </div>
-{% endblock %}
+
+{% endblock content %}
