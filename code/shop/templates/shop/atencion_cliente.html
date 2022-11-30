@@ -1,7 +1,7 @@
-{% extends 'shop/layout.html' %} {% block body %}
+{% extends 'shop/layout.html' %} {% block content %}
 <div id="atencion_cliente">
   <div id="atencion_cliente_form">
-    <form action="{% url 'atencion_cliente_datos' %}" method="get">
+    <form action="{% url 'shop:atencion_cliente_datos' %}" method="get">
       {% csrf_token %} {{ form }}
       <label for="tipo">Tipo de peticion: </label>
       <select id="tipo" name="tipo">
@@ -16,4 +16,5 @@
       <input type="submit" value="Enviar" />
     </form>
   </div>
-{% endblock %}
+</div>
+{% endblock content %}

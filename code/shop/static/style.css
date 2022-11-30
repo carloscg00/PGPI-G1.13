@@ -29,10 +29,28 @@ header {
 }
 
 nav {
-  background-color: rgb(66, 63, 63);
+  background-color: rgb(92, 89, 89);
   height: 30px;
   font-size: 20px;
-  line-height: 10px;
+  padding-top: 1px;
+}
+
+nav ul li {
+  color: white;
+  float: left;
+  list-style: none;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: -15px;
+}
+
+nav #botones_funcion {
+  float: left;
+}
+
+nav #botones_sesion {
+  float: right;
+  margin-right: 20px;
 }
 
 nav a:link,
@@ -42,12 +60,6 @@ a:visited {
 
 nav a:hover {
   color: blue;
-}
-
-nav ul li {
-  float: left;
-  list-style: none;
-  margin: 10px;
 }
 
 #content {
@@ -82,7 +94,7 @@ footer {
 #texto_sobre_nosotros {
   max-width: 40%;
   font-size: 30px;
-  margin-left: 20px;
+  margin-left: 100px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
@@ -123,4 +135,49 @@ footer {
 
 #recomendacion p {
   margin: 10px;
+}
+
+#categoria {
+  color: black;
+}
+
+#product_detail {
+  border: 2px solid black;
+  margin: auto;
+  max-width: 50%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#img_detail,
+#img_producto {
+  width: 300px;
+}
+
+#titulo_categoria {
+  text-align: center;
+}
+
+#product_list {
+  display: flex;
+  text-align: center;
+}
+
+#item {
+  border: 1px solid black;
+  margin: 10px;
+  max-width: 300px;
+  text-align: center;
+}
+
+#login,
+#register,
+#reserva {
+  border: 2px solid black;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 50%;
+  padding: 10px;
 }
