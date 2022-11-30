@@ -19,13 +19,14 @@
             {% endfor %}
         </ul>
     </div>
+
+        <h1>{% if category %}{{ category.name }}{% else %}Servicios {% endif %}</h1>
     <form id="buscador" action="{% url 'shop:product_list' %}">
         {% csrf_token %} {{ form }}
         <input type="submit">
     </form>
     <h1 id="titulo_categoria">{% if category %}{{ category.name }}{% else %}Products {% endif %}</h1>
     <div id="product_list">
-
         {% for product in products %}
             {% if  product.name == p or p == "" %}
             <div id="item">
@@ -33,6 +34,7 @@
                 <a href="{{ product.get_absolute_url }}">
                 <img id="img_producto" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "CortoYCambio.png" %}{% endif %}">
                 </a>
+                <a id="enlaces_catalogo" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
                 <br>
                 ${{ product.price }}
             </div>

@@ -43,14 +43,13 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('shop:product_detail', args=[self.id, self.slug])
 
-
 class CustomerSupport(models.Model):
-    title = models.CharField(max_length=50, db_index=True)
+    content = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
-    description = models.CharField(max_length=500)
-
+    #date = models.DateTimeField(auto_now_add=True)
     class Meta:
-        ordering = ('title',)
-        index_together = (('id', 'slug'))
-        verbose_name = 'product'
-        verbose_name_plural = 'products'
+        ordering = ('content',)
+        index_together = (('id', 'slug'),)
+ 
+    def __str__(self):
+        return self.name

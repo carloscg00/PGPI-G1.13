@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
-
-
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
@@ -125,7 +124,7 @@ STATIC_URL = '/static/'
 
 
 # Login/Logout
-LOGIN_REDIRECT_URL = 'inicio'
+LOGIN_REDIRECT_URL = 'shop:inicio'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
@@ -137,3 +136,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+# Cart
+CART_SESSION_ID = 'cart'
