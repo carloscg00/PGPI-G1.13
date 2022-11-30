@@ -65,6 +65,10 @@ footer {
   padding-left: 10px;
 }
 
+#enlaces_catalogo {
+  color: black;
+}
+
 #vista_inicio {
   text-align: center;
 }
