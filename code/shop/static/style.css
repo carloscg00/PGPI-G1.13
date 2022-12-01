@@ -81,6 +81,11 @@ footer {
   color: black;
 }
 
+#buscador {
+  color: blue;
+  text-align: center;
+}
+
 #vista_inicio {
   text-align: center;
 }

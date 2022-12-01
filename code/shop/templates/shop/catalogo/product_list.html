@@ -20,15 +20,13 @@
         </ul>
     </div>
 
-        <h1>{% if category %}{{ category.name }}{% else %}Servicios {% endif %}</h1>
-    <form id="buscador" action="{% url 'shop:product_list' %}">
-        {% csrf_token %} {{ form }}
-        <input type="submit">
-    </form>
-    <h1 id="titulo_categoria">{% if category %}{{ category.name }}{% else %}Products {% endif %}</h1>
+    
+    <a id="buscador" href="{% url 'shop:buscador' %}">Buscador de servicios</a>
+
+    <h1>{% if category %}{{ category.name }}{% else %}Servicios {% endif %}</h1>
+    <h2 id="titulo_categoria">{% if category %}{{ category.name }}{% else %}Todos los servicios{% endif %}</h2>
     <div id="product_list">
         {% for product in products %}
-            {% if  product.name == p or p == "" %}
             <div id="item">
                 <h2>{{product.name}}</h2>
                 <a href="{{ product.get_absolute_url }}">
@@ -38,7 +36,6 @@
                 <br>
                 ${{ product.price }}
             </div>
-            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

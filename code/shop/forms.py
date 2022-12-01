@@ -2,8 +2,7 @@ from django import forms
 from shop import models
 
 class clienteForm(forms.Form):
-    sugerencia = forms.CharField()
-
+    sugerencia = forms.CharField(required=True)
 
 class reservaForm(forms.Form):
       servicio =  forms.ChoiceField(choices=[('corte_caballero','Corte para caballero'),
