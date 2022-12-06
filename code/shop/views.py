@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Category, Product
+from .models import Category, Product, CustomerSupport
 from . import forms
 from cart.forms import CartAddProductForm
 
@@ -12,12 +12,10 @@ def inicio_view(request):
 def sobre_nosotros_view(request):
     return render(request, 'shop/sobre_nosotros.html')
 
-
-#def atencion_cliente_view(request):
-    return render(request, 'shop/atencion_cliente.html')
-
 def cliente_form(request):
-    form = forms.clienteForm()
+    form = forms.clienteForm(request.POST)
+    if form.is_valid():
+        form.save()
     return render(request, 'shop/atencion_cliente.html', {'form': form})
 
 def reserva_form(request):

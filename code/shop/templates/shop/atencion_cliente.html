@@ -2,9 +2,10 @@
 {% block content %}
 <div id="atencion_cliente">
   <div id="atencion_cliente_form">
-    <form action="{% url 'shop:atencion_cliente' %}" method="get">
-      {% csrf_token %} {{ form }}
+    <form method="post" class="customer-form">
+      {{ form.as_p }}
       <input type="submit" value="Enviar" />
+      {% csrf_token %}
     </form>
   </div>
 </div>

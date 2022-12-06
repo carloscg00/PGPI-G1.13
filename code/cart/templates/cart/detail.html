@@ -13,7 +13,6 @@
                 <th>Image</th>
                 <th>Product</th>
                 <th>Quantity</th>
-                <th>Date</th>
                 <th>Remove</th>
                 <th>Unit price</th>
                 <th>Price</th>
@@ -38,7 +37,6 @@
                                 {% csrf_token %}
                             </form>
                         </td>
-                        <td>{{ item.date }}</td>
                         <td>
                             <form action="{% url "cart:cart_remove" product.id %}" method="post">
                             <input type="submit" value="Remove">
@@ -59,6 +57,8 @@
     </table>
     <p class="text-right">
         <a href="{% url "shop:product_list" %}" class="button light">Continue shopping</a>
-        <a href="#" class="button">Checkout</a>
+        <a id="enlaces_catalogo" href="{% url 'orders:order_create' %}" class="button">
+            Checkout
+        </a>
     </p>
 {% endblock %}
