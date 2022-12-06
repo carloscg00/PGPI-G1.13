@@ -1,6 +1,7 @@
 from django import forms
+from datetime import datetime
 
-PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 21)]
+PRODUCT_QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 4)]
 
 class CartAddProductForm(forms.Form):
     quantity = forms.TypedChoiceField(

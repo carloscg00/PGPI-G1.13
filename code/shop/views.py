@@ -24,22 +24,26 @@ def reserva_form(request):
     form = forms.reservaForm()
     return render(request, 'shop/reserva_form.html', {'form': form})
 
+def buscador(request):
+    categories = Category.objects.all()
+    products = Product.objects.filter(available=True)
+    form = forms.buscador_productos(request.GET, initial="")
+    if form.data:
+        p=form.data['producto']
+        res = render(request, 'shop/catalogo/buscador.html',{'categories': categories, 'products': products, 'form':form, 'p':p})
+    else:
+        res = res = render(request, 'shop/catalogo/buscador.html',{'categories': categories, 'products': products, 'form':form})
+    return res
 
 def product_list(request, category_slug=None):
         
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
-    form = forms.buscador_productos(request.GET, initial="")
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
-    if form.data:
-        p=form.data['producto']
-        res = render(request, 'shop/catalogo/product_list.html',{'category': category, 'categories': categories, 'products': products, 'form':form, 'p':p})
-    else:
-        res = res = render(request, 'shop/catalogo/product_list.html',{'category': category, 'categories': categories, 'products': products, 'form':form})
-    return res
+    return render(request, 'shop/catalogo/product_list.html',{'category': category, 'categories': categories, 'products': products})
 
 
 def product_detail(request, id, slug):
