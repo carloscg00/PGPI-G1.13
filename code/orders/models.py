@@ -14,7 +14,6 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
     book_date = models.DateTimeField()
     paid = models.BooleanField(default=False)
-    braintree_id = models.CharField(max_length=150, blank=True)
 
     class Meta:
         ordering = ('-created',)
