@@ -13,6 +13,7 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     book_date = models.DateTimeField()
+    confirmed = models.BooleanField(default=False)
     paid = models.BooleanField(default=False)
 
     class Meta:
