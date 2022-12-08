@@ -1,0 +1,13 @@
+{% extends 'shop/layout.html' %} {% load static %}
+{% block content %}
+<div id="atencion_cliente">
+  <div id="atencion_cliente_form">
+    <form method="post" class="customer-form">
+      {{ form.as_p }}
+      <input type="submit" value="Enviar" />
+      {% csrf_token %}
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

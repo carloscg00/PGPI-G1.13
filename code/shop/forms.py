@@ -1,7 +1,11 @@
 from django import forms
+from shop import models
+from .models import CustomerSupport
 
-class clienteForm(forms.Form):
-    tipo_de_consulta = forms.ChoiceField(choices=[('pregunta','Pregunta'),
-          ('recomendacion','Recomendacion'),('reclamacion','Reclamacion'),('otro','Otro')])
-    pregunta = forms.CharField()
-    descripcion = forms.CharField()
+class clienteForm(forms.ModelForm):
+    class Meta:
+        model = CustomerSupport
+        fields = ['content']
+
+class buscador_productos(forms.Form):
+    producto = forms.CharField(required=False)

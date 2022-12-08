@@ -1,34 +1,54 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from .models import Category, Product, CustomerSupport
 from . import forms
+from cart.forms import CartAddProductForm
+from django.contrib.auth.decorators import login_required
 
 preguntas = []
 
 def inicio_view(request):
-    return render(request, 'myshop/inicio.html')
+    return render(request, 'shop/inicio.html')
 
 def sobre_nosotros_view(request):
-    return render(request, 'myshop/sobre_nosotros.html')
+    return render(request, 'shop/sobre_nosotros.html')
 
-def catalogo_view(request):
-    return render(request, 'myshop/catalogo.html')
 
-def atencion_cliente_view(request):
-    if len(preguntas)==0:
-        res = render(request, 'myshop/atencion_cliente.html')
+@login_required
+def cliente_form(request):
+    form = forms.clienteForm(request.POST)
+    if form.is_valid():
+        form.save()
+    return render(request, 'shop/atencion_cliente.html', {'form': form})
+
+def reserva_form(request):
+    form = forms.reservaForm()
+    return render(request, 'shop/reserva_form.html', {'form': form})
+
+def buscador(request):
+    categories = Category.objects.all()
+    products = Product.objects.filter(available=True)
+    form = forms.buscador_productos(request.GET, initial="")
+    if form.data:
+        p=form.data['producto']
+        res = render(request, 'shop/catalogo/buscador.html',{'categories': categories, 'products': products, 'form':form, 'p':p})
     else:
-        res = render(request, 'myshop/atencion_cliente.html',{'preguntas':preguntas})
+        res = res = render(request, 'shop/catalogo/buscador.html',{'categories': categories, 'products': products, 'form':form})
     return res
 
-def atencion_cliente_datos(request):
-    if request.method=="GET":    
-        tipo = request.GET['tipo']
-        cuestion = request.GET['cuestion']
-        tupla = (tipo,cuestion)
-        preguntas.append(tupla)
-    context = {'preguntas':preguntas}
-    return render(request, 'myshop/atencion_cliente.html',context)
+def product_list(request, category_slug=None):
+        
+    category = None
+    categories = Category.objects.all()
+    products = Product.objects.filter(available=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+    return render(request, 'shop/catalogo/product_list.html',{'category': category, 'categories': categories, 'products': products})
 
-def cliente_form(request):
-    form = forms.clienteForm()
-    return render(request, 'myshop/atencion_cliente.html', {'form': form})
+
+def product_detail(request, id, slug):
+    product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    cart_product_form = CartAddProductForm()
+    return render(request, 'shop/catalogo/detail.html', {'product': product,
+                                    'cart_product_form': cart_product_form})
