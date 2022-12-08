@@ -46,10 +46,10 @@ class Product(models.Model):
 class CustomerSupport(models.Model):
     content = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
-    date = models.DateTimeField(auto_now_add=True)
+    creation = models.DateTimeField(auto_now_add=True)
     class Meta:
         ordering = ('content',)
         index_together = (('id', 'slug'),)
  
     def __str__(self):
-        return self.name
+        return self.content

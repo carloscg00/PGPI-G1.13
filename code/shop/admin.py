@@ -16,6 +16,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(CustomerSupport)
 class CustomerSupportAdmin(admin.ModelAdmin):
-    list_display = ['content', 'slug']
+    list_display = ['content', 'slug', 'creation']
     prepopulated_fields = {'slug': ('content',)}
 
