@@ -13,6 +13,7 @@
                 <th>Image</th>
                 <th>Product</th>
                 <th>Quantity</th>
+                <th>Date</th>
                 <th>Remove</th>
                 <th>Unit price</th>
                 <th>Price</th>
@@ -29,7 +30,7 @@
                             </a>
                         </td>
                         <td>{{ product.name }}</td>
-                        <td>
+                        <td class="date">
                             <form action="{% url "cart:cart_add" product.id %}" method="post">
                                 {{ item.update_quantity_form.quantity }}
                                 {{ item.update_quantity_form.override }}
@@ -37,6 +38,7 @@
                                 {% csrf_token %}
                             </form>
                         </td>
+                        <td>{{ item.date }}</td>
                         <td>
                             <form action="{% url "cart:cart_remove" product.id %}" method="post">
                             <input type="submit" value="Remove">
