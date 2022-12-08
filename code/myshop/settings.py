@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,27 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Cart
 CART_SESSION_ID = 'cart'
+
+# Braintree settings
+BRAINTREE_MERCHANT_ID = '7z7bv64gqbtwd5bv' # Merchant ID
+BRAINTREE_PUBLIC_KEY = 'jkbqsbrvnqbz5h7g' # Public Key
+BRAINTREE_PRIVATE_KEY = 'ea84cd4b618aa861f6782d81190ccf0a' # Private key
+
+import braintree
+
+BRAINTREE_CONF = braintree.Configuration(
+ braintree.Environment.Sandbox,
+ BRAINTREE_MERCHANT_ID,
+ BRAINTREE_PUBLIC_KEY,
+ BRAINTREE_PRIVATE_KEY
+)
+
+# #Stripe
+# from decouple import config
+
+# STRIPE_SECRET_KEY = config('sk_test_51MCSVdADx8XxZ55i7PpyC8tXzSMG4pYCgLD1pgReiqs988H25Rfojzi6iIOe6j8tZM4ILpDT5oF1hBRYnTYV9rDx00wD64NDCD')
+
+# import stripe
+# from django.conf import settings
+
+# stripe.api_key = settings.STRIPE_SECRET_KEY

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Category, Product, CustomerSupport
 from . import forms
 from cart.forms import CartAddProductForm
+from django.contrib.auth.decorators import login_required
 
 preguntas = []
 
@@ -12,6 +13,8 @@ def inicio_view(request):
 def sobre_nosotros_view(request):
     return render(request, 'shop/sobre_nosotros.html')
 
+
+@login_required
 def cliente_form(request):
     form = forms.clienteForm(request.POST)
     if form.is_valid():
