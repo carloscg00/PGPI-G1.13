@@ -4,7 +4,6 @@ from .models import OrderItem
 from .forms import OrderCreateForm
 from cart.cart import Cart
 from django.contrib.auth.decorators import login_required
-from .tasks import order_created
 
 @login_required
 def order_create(request):
@@ -20,8 +19,6 @@ def order_create(request):
                     quantity=item['quantity'])
             # clear the cart
             cart.clear()
-            # launch asynchronous task
-            order_created.delay(order.id)
             # set the order in the session
             request.session['order_id'] = order.id
             # redirect for payment
@@ -31,6 +28,3 @@ def order_create(request):
     return render(request,
         'orders/order/create.html',
         {'cart': cart, 'form': form})
-
-@login_required
-def view_orders(request):
