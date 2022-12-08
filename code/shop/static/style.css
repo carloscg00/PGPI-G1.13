@@ -197,7 +197,8 @@ footer ul li {
 
 #login,
 #register,
-#reserva {
+#reserva,
+#pedido {
   border: 2px solid black;
   margin: auto;
   margin-top: 20px;

@@ -1,0 +1,12 @@
+{% extends 'shop/layout.html' %} {% load static %} {% block content %}
+<h1>Pedidos</h1>
+{% for order in orders%}
+<div id="pedido">
+    <span>Servicio: {{order.product.name}}</span>
+    <br>
+    <span>Fecha: {{order.order.book_date}}</span>
+    <br>
+    <span>Confirmado: {{order.order.confirmed}}</span> 
+</div>
+{% endfor %} 
+{% endblock %}

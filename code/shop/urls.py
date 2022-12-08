@@ -10,6 +10,7 @@ urlpatterns = [
     path('buscador', views.buscador, name='buscador'),
     path('account/', include('account.urls'), name='login'),
     path('account/', include('account.urls'), name='register'),
+    path('orders/', include('orders.urls'), name='orders'),
     path('reserva_form/',views.reserva_form, name='reserva_form'),
     path('product_list', views.product_list, name='product_list'),
     path('product_list/<slug:category_slug>/', views.product_list, name='product_list_by_category'),
