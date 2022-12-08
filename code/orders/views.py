@@ -4,6 +4,7 @@ from .models import OrderItem, Order
 from .forms import OrderCreateForm
 from cart.cart import Cart
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 @login_required
 def order_create(request):
@@ -28,9 +29,9 @@ def order_create(request):
 
 @login_required
 def my_orders(request):
-    orders = OrderItem.objects.all()
+    orders = Order.objects.all()
     order_list = []
     for o in orders:
-        if o.order.confirmed == True:
+        if o.first_name == User and o.last_name == User.last_name:
             order_list.append(o)
     return render(request, 'my_orders.html', {'orders':order_list})
