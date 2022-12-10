@@ -29,9 +29,9 @@ def order_create(request):
 
 @login_required
 def my_orders(request):
-    orders = Order.objects.all()
+    orders = OrderItem.objects.all()
     order_list = []
     for o in orders:
-        if o.first_name == User and o.last_name == User.last_name:
+        if o.order.first_name == request.user.first_name and o.order.last_name == request.user.last_name:
             order_list.append(o)
-    return render(request, 'my_orders.html', {'orders':order_list})
+    return render(request, 'my_orders.html', {'orders': order_list})
