@@ -27,15 +27,13 @@
           <li><a name="textoMenu" href="{% url 'orders:my_orders' %}">Mis pedidos</a></li>
         </div>
         <div id="botones_sesion">
-          <span class="user">
             {% if request.user.is_authenticated %}
-              Hola, {{ request.user.first_name }},
-              <a href="{% url "logout" %}">Logout</a>
+              <li>Hola, {{ request.user.first_name }}</li>
+              <li><a href="{% url "logout" %}">Logout</a></li>
             {% else %}
               <li><a href="{% url 'register' %}">Registrarse</a></li>
               <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
             {% endif %}
-           </span>
         </div>
           </ul>
     </nav>
@@ -43,13 +41,13 @@
         {% block content %}
         {% endblock content %}
       </div>
-</body>
-<footer>
-  <ul>
-    <li>&copy; Corto & Cambio 2022 - 2023</li>
-    <li id="terminos"><a target="blank" href="{% static 'terminos_de_servicio.pdf' %}">Terminos de servicio</a></li>
-    <li id="terminos"><a target="blank" href="{% static 'aviso_de_privacidad.pdf' %}">Aviso de privacidad</a></li>
-  </ul>
-</footer>
-</div>
+    </body>
+    <footer>
+        <ul>
+          <li>&copy; Corto & Cambio 2022 - 2023</li>
+          <li id="terminos"><a target="blank" href="{% static 'terminos_de_servicio.pdf' %}">Terminos de servicio</a></li>
+          <li id="terminos"><a target="blank" href="{% static 'aviso_de_privacidad.pdf' %}">Aviso de privacidad</a></li>
+        </ul>
+    </footer>
+  </div>
 </html>

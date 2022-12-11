@@ -4,7 +4,7 @@
   <div id="atencion_cliente_form">
     <form method="post" class="customer-form">
       {{ form.as_p }}
-      <input type="submit" value="Enviar" />
+      <input id="boton" type="submit" value="Enviar" />
       {% csrf_token %}
     </form>
   </div>

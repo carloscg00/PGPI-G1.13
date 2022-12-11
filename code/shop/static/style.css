@@ -72,22 +72,28 @@ footer {
   background-color: rgb(25, 25, 44);
   color: white;
   font-size: 20px;
-  line-height: 1px;
   height: 30px;
-  line-height: 1px;
-  padding-left: 10px;
-  display: flex;
 }
 
 footer ul li {
   float: left;
   list-style: none;
+  padding: 5px;
 }
 
 #terminos {
-  color: white;
   float: right;
-  margin-left: 30px;
+  margin-right: 20px;
+}
+
+#boton{
+  font-size: large;
+  background-color: black;
+  color: white;
+}
+
+#enlace{
+  color: blue;
 }
 
 #enlaces_catalogo {
@@ -194,6 +200,11 @@ footer ul li {
   padding: 10px;
   margin-bottom: 20px;
 }
+#pedidos{
+  text-align: center;
+}
+
+
 
 #login,
 #register,
@@ -205,6 +216,7 @@ footer ul li {
   margin-bottom: 20px;
   max-width: 50%;
   padding: 10px;
+  font-size: larger;
 }
 
 .order-form {

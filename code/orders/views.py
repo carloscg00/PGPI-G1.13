@@ -12,7 +12,11 @@ def order_create(request):
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
-            order = form.save()
+            order = form.save(commit=False)
+            order.first_name = request.user.first_name
+            order.last_name = request.user.last_name
+            order.email = request.user.email
+            order.save()
             for item in cart:
                 OrderItem.objects.create(order=order,
                     product=item['product'],
@@ -30,8 +34,9 @@ def order_create(request):
 @login_required
 def my_orders(request):
     orders = OrderItem.objects.all()
-    order_list = []
+    lista = []
+    u = request.user
     for o in orders:
-        if o.order.first_name == request.user.first_name and o.order.last_name == request.user.last_name:
-            order_list.append(o)
-    return render(request, 'my_orders.html', {'orders': order_list})
+        if o.order.first_name == u.first_name and o.order.last_name == u.last_name and o.order.email == u.email:
+            lista.append(o)
+    return render(request, 'my_orders.html', {'orders': lista})
