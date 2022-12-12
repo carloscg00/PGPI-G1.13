@@ -1,6 +1,6 @@
 from django.urls import reverse
-from django.shortcuts import render, redirect
-from .models import OrderItem, Order
+from django.shortcuts import render, get_object_or_404
+from .models import OrderItem
 from .forms import OrderCreateForm
 from cart.cart import Cart
 from django.contrib.auth.decorators import login_required
@@ -40,3 +40,11 @@ def my_orders(request):
         if o.order.first_name == u.first_name and o.order.last_name == u.last_name and o.order.email == u.email:
             lista.append(o)
     return render(request, 'my_orders.html', {'orders': lista})
+
+def cancel_order(request, id_pedido):
+    orders = OrderItem.objects.all()
+    for o in orders:
+        if o.order.id == id_pedido:
+            order = o
+            order.delete()
+    return my_orders(request)

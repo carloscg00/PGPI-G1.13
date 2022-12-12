@@ -15,6 +15,7 @@ class Order(models.Model):
     book_date = models.DateTimeField()
     confirmed = models.BooleanField(default=False)
     paid = models.BooleanField(default=False)
+    comment = models.CharField(max_length=250, default="Ninguno")
 
     class Meta:
         ordering = ('-created',)

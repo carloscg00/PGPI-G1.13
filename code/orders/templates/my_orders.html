@@ -8,6 +8,12 @@
     <span>Fecha: {{order.order.book_date}}</span>
     <br>
     <span>Confirmado: {{order.order.confirmed}}</span> 
+    <br>
+    {% if order.order.comment != "" %}
+    <span>Comentario adicional: {{order.order.comment}}</span>
+    <br>
+    {% endif %}
+    <a id="enlace" href="cancel_order/{{order.order.id}}">Cancelar pedido</a>
 </div>
 {% endfor %} 
 </div>
