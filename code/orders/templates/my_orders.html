@@ -14,7 +14,7 @@
     <span><b>Servicios:</b> 
         {% for i in orderItems %}
             {% if i.order == order %}
-                {{i.product.name}}<br>
+                {{i.product.name}} x{{i.quantity}}<br>
             {% endif %}
         {% endfor %}
     </span>
