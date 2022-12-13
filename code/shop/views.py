@@ -16,7 +16,7 @@ def sobre_nosotros_view(request):
 
 @login_required
 def cliente_form(request):
-    form = forms.clienteForm(request.POST)
+    form = forms.ClienteForm(request.POST)
     if form.is_valid():
         form.save()
     return render(request, 'shop/atencion_cliente.html', {'form': form})
