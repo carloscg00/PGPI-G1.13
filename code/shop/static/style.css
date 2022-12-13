@@ -25,7 +25,7 @@ header {
   margin-left: 6%;
   font-size: 80px;
   line-height: 35px;
-  font-family: "Franklin Gothic Medium";
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 nav {
@@ -72,22 +72,28 @@ footer {
   background-color: rgb(25, 25, 44);
   color: white;
   font-size: 20px;
-  line-height: 1px;
   height: 30px;
-  line-height: 1px;
-  padding-left: 10px;
-  display: flex;
 }
 
 footer ul li {
   float: left;
   list-style: none;
+  padding: 5px;
 }
 
 #terminos {
-  color: white;
   float: right;
-  margin-left: 30px;
+  margin-right: 20px;
+}
+
+#boton{
+  font-size: large;
+  background-color: black;
+  color: white;
+}
+
+#enlace{
+  color: blue;
 }
 
 #enlaces_catalogo {
@@ -181,8 +187,9 @@ footer ul li {
 }
 
 #product_list {
-  padding-left: 500px;
-  max-width: 99%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 3%;
 }
 
 #item {
@@ -194,16 +201,23 @@ footer ul li {
   padding: 10px;
   margin-bottom: 20px;
 }
+#pedidos{
+  text-align: center;
+}
+
+
 
 #login,
 #register,
-#reserva {
+#reserva,
+#pedido {
   border: 2px solid black;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
   max-width: 50%;
   padding: 10px;
+  font-size: larger;
 }
 
 .order-form {
@@ -248,6 +262,5 @@ form div.field {
   padding:6px 12px;
   border:0;
   background:#efefef;
-  color:#666;
   border-radius:4px;
 }
