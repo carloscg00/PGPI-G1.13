@@ -45,6 +45,6 @@ def cancel_order(request, id_pedido):
     orders = OrderItem.objects.all()
     for o in orders:
         if o.order.id == id_pedido:
-            order = o
-            order.delete()
+            o.order.delete()
+            o.delete()
     return my_orders(request)
