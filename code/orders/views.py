@@ -14,7 +14,6 @@ def order_create(request):
         if form.is_valid():
             order = form.save(commit=False)
             order.first_name = request.user.first_name
-            order.last_name = request.user.last_name
             order.email = request.user.email
             order.save()
             for item in cart:
@@ -37,7 +36,7 @@ def my_orders(request):
     lista = []
     u = request.user
     for o in orders:
-        if o.order.first_name == u.first_name and o.order.last_name == u.last_name and o.order.email == u.email:
+        if o.order.first_name == u.first_name and o.order.email == u.email:
             lista.append(o)
     return render(request, 'my_orders.html', {'orders': lista})
 

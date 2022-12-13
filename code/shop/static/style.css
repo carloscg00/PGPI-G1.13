@@ -187,8 +187,9 @@ footer ul li {
 }
 
 #product_list {
-  padding-left: 500px;
-  max-width: 99%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 3%;
 }
 
 #item {
