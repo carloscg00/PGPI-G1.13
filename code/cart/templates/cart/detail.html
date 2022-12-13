@@ -6,17 +6,17 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Your shopping cart</h1>
+    <h1>Mi carrito</h1>
     <table class="cart">
         <caption>Servicios en el carrito</caption>
         <thead>
             <tr>
-                <th>Image</th>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Remove</th>
-                <th>Unit price</th>
-                <th>Price</th>
+                <th> </th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th> </th>
+                <th>Precio de la unidad</th>
+                <th>Precio total</th>
             </tr>
         </thead>
         <tbody>
@@ -57,7 +57,7 @@
         </tbody>
     </table>
     <p class="text-right">
-        <a id="enlaces_catalogo" href="{% url "shop:product_list" %}" class="button light">Continue shopping</a> 
+        <a id="enlaces_catalogo" href="{% url "shop:product_list" %}" class="button light">Continuar comprando</a> 
         <a id="enlaces_catalogo" href="{% url 'orders:order_create' %}" class="button">
             Confirmar pedido
         </a>
