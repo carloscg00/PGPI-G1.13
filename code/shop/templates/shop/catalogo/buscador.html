@@ -13,7 +13,7 @@ servicios {% endblock %} {% block content %}
   <div id="item">
     <h2>{{product.name}}</h2>
     <a href="{{ product.get_absolute_url }}">
-      <img alt="imagen-producto" id="img_producto" src="{% if product.image %}{{ product.image.url}}
+      <img id="img_producto" src="{% if product.image %}{{ product.image.url}}
       {%else %}{% static "CortoYCambio.png" %}{% endif %}">
     </a>
     <br />
