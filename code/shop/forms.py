@@ -2,7 +2,7 @@ from django import forms
 from shop import models
 from .models import CustomerSupport
 
-class ClienteForm(forms.ModelForm):
+class clienteForm(forms.ModelForm):
     class Meta:
         model = CustomerSupport
         fields = ['content']
