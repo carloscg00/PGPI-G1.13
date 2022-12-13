@@ -8,6 +8,7 @@
 {% block content %}
     <h1>Your shopping cart</h1>
     <table class="cart">
+        <caption>Servicios en el carrito</caption>
         <thead>
             <tr>
                 <th>Image</th>
@@ -24,7 +25,7 @@
                     <tr>
                         <td>
                             <a href="{{ product.get_absolute_url }}">
-                                <img src="{% if product.image %}{{ product.image.url}}
+                                <img alt="imagen-producto" src="{% if product.image %}{{ product.image.url}}
                                 {% else %}{% static "img/no_image.png" %}{% endif %}">
                             </a>
                         </td>

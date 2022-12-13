@@ -7,7 +7,7 @@
 
 {% block content %}
     <div id="sidebar">
-        <h1>Categories</h1>
+        <h1>Categorías</h1>
         <ul>
             <li {% if not category %}class="selected"{% endif %}>
                 <a id="categoria" href="{% url 'shop:product_list' %}">Todos</a>
@@ -29,7 +29,7 @@
             <div id="item">
                 <h2>{{product.name}}</h2>
                 <a href="{{ product.get_absolute_url }}">
-                    <img id="img_producto" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "CortoYCambio.png" %}{% endif %}">
+                    <img alt="imagen-producto" id="img_producto" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "CortoYCambio.png" %}{% endif %}">
                 </a>
                 <br>
                 <a id="enlaces_catalogo" href="{{ product.get_absolute_url }}">{{ product.name }}</a>
