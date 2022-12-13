@@ -3,17 +3,22 @@
 <h1>Pedidos</h1>
 {% for order in orders %}
 <div id="pedido">
-    <span>Servicio: {{order.product.name}}</span>
+    <span><b>Fecha:</b> {{order.book_date}}</span>
     <br>
-    <span>Fecha: {{order.order.book_date}}</span>
+    <span><b>Confirmado:</b> {{order.confirmed}}</span> 
     <br>
-    <span>Confirmado: {{order.order.confirmed}}</span> 
-    <br>
-    {% if order.order.comment != "" %}
-    <span>Comentario adicional: {{order.order.comment}}</span>
+    {% if order.comment != "" %}
+    <span><b>Comentario adicional:</b> {{order.comment}}</span>
     <br>
     {% endif %}
-    <a id="enlace" href="cancel_order/{{order.order.id}}">Cancelar pedido</a>
+    <span><b>Servicios:</b> 
+        {% for i in orderItems %}
+            {% if i.order == order %}
+                {{i.product.name}}<br>
+            {% endif %}
+        {% endfor %}
+    </span>
+    <a id="enlace" href="cancel_order/{{order.id}}">Cancelar pedido</a>
 </div>
 {% endfor %} 
 </div>

@@ -10,7 +10,7 @@ class Order(models.Model):
     email = models.EmailField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    book_date = models.DateTimeField(validators=[MinValueValidator(timezone.now)])
+    book_date = models.DateTimeField(validators=[MinValueValidator(timezone.now)], null=False)
     confirmed = models.BooleanField(default=False)
     paid = models.BooleanField(default=False)
     comment = models.CharField(max_length=250, default="Ninguno")
